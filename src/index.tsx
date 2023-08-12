@@ -1,15 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import reportWebVitals from "./reportWebVitals";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import WeatherDashboard from "./pages/weather/WeatherDashboard";
+import ErrorPage from "./pages/error";
+import RootPage from "./RootPage";
+
+import "semantic-ui-css/semantic.min.css";
+import "./index.css";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <WeatherDashboard />,
+    errorElement: <ErrorPage />,
+  },
+]);
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <RootPage>
+      <RouterProvider router={router} />
+    </RootPage>
   </React.StrictMode>
 );
 
