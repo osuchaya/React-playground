@@ -13,7 +13,9 @@ import styled from "styled-components";
 import { Button } from "semantic-ui-react";
 import dayjs from "dayjs";
 
-export default function weather({ weatherData }) {
+// https://openweathermap.org/api
+//null coalescing - ?? (also called fallback operator)
+export default function Weather({ weatherData }) {
   const WeatherIcon = styled.div`
     color: whitesmoke;
   `;
@@ -54,12 +56,15 @@ export default function weather({ weatherData }) {
         />
       </div>
       <div className="flex">
-        <p className="day">{dayjs().format("dddd")}</p>
+        {// dayjs needs to be updated to show the proper date
+        }
+        <p className="day">{dayjs(weatherData.dt * 1000).format("dddd")}</p>
         <div className="flex">
           <WeatherIcon style={{ fontSize: 30, marginTop: 15 }}>
             {weatherIcon}
           </WeatherIcon>
           <p className="description">{weatherData.weather[0].main}</p>
+       
         </div>
       </div>
 
